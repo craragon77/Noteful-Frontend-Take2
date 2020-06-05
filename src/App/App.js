@@ -22,8 +22,8 @@ class App extends Component {
     const foldersUrl = process.env.REACT_APP_API_FOLDERS_ENDPOINT
     const API_KEY = process.env.REACT_APP_API_KEY
     Promise.all([
-      fetch(foldersUrl),
-      fetch(notesUrl)
+      fetch(notesUrl),
+      fetch(foldersUrl)
     ])
       .then(([notesRes, foldersRes]) => {
         if (!notesRes.ok)

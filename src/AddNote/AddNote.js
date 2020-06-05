@@ -15,7 +15,7 @@ export default class AddNote extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const newNote = {
-      title: e.target['note-name'].value,
+      title: e.target['note-title'].value,
       content: e.target['note-content'].value,
       folder_id: e.target['note-folder-id'].value,
       date: new Date(),
@@ -49,10 +49,10 @@ export default class AddNote extends Component {
         <h2>Create a note</h2>
         <NotefulForm onSubmit={this.handleSubmit}>
           <div className='field'>
-            <label htmlFor='note-name-input'>
+            <label htmlFor='note-title-input'>
               Name
             </label>
-            <input type='text' id='note-name-input' name='note-name' />
+            <input type='text' id='note-title-input' name='note-title' />
           </div>
           <div className='field'>
             <label htmlFor='note-content-input'>
