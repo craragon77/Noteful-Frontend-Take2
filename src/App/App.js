@@ -98,7 +98,7 @@ class App extends Component {
   renderMainRoutes() {
     return (
       <>
-        {['/', '/note/noteId'].map(path =>
+        {['/', '/folder/folderId'].map(path =>
           <Route
             exact
             key={path}
