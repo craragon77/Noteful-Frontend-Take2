@@ -39,7 +39,7 @@ export default class Note extends React.Component {
   }
 
   render() {
-    const { title, id, date } = this.props
+    const { title, id, modified } = this.props
     return (
       <div className='Note'>
         <h2 className='Note__title'>
@@ -61,7 +61,7 @@ export default class Note extends React.Component {
             Modified
             {' '}
             <span className='Date'>
-              {format(date, 'Do MMM YYYY')}
+              {format(modified, 'Do MMM YYYY')}
             </span>
           </div>
         </div>

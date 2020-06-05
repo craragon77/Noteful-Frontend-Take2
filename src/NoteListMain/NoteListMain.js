@@ -23,12 +23,12 @@ export default class NoteListMain extends React.Component {
       <section className='NoteListMain'>
         <ul>
           {notesForFolder.map(note =>
-            <li key={notes.id}>
+            <li key={note.id}>
               <Note
-                id={notes.id}
-                title={notes.title}
-                folder_id={notes.folder_id}
-                date={notes.date}
+                id={note.id}
+                title={note.title}
+                folder_id={note.folder_id}
+                date={note.date}
               />
             </li>
           )}
