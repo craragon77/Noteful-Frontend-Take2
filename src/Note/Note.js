@@ -39,11 +39,11 @@ export default class Note extends React.Component {
   }
 
   render() {
-    const { title, id, date } = this.props
+    const { title, id, folder_id, date } = this.props
     return (
       <div className='Note'>
         <h2 className='Note__title'>
-          <Link to={`/note/${id}`}>
+          <Link to={process.env.REACT_APP_API_NOTES_ENDPOINT + `${id}`}>
             {title}
           </Link>
         </h2>
