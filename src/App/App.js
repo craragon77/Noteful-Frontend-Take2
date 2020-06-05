@@ -18,9 +18,12 @@ class App extends Component {
   };
 
   componentDidMount() {
+    const notesUrl = process.env.REACT_APP_API_NOTES_ENDPOINT
+    const foldersUrl = process.env.REACT_APP_API_FOLDERS_ENDPOINT
+    const API_KEY = process.env.REACT_APP_API_KEY
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/notes`),
-      fetch(`${config.API_ENDPOINT}/folders`)
+      fetch(foldersUrl),
+      fetch(notesUrl)
     ])
       .then(([notesRes, foldersRes]) => {
         if (!notesRes.ok)
@@ -95,7 +98,7 @@ class App extends Component {
   renderMainRoutes() {
     return (
       <>
-        {['/', '/folder/:folderId'].map(path =>
+        {['/', '/note/noteId'].map(path =>
           <Route
             exact
             key={path}
@@ -104,7 +107,7 @@ class App extends Component {
           />
         )}
         <Route
-          path='/note/:noteId'
+          path='/notes/:noteId'
           component={NotePageMain}
         />
         <Route

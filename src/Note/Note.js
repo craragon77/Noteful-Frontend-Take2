@@ -16,9 +16,10 @@ export default class Note extends React.Component {
     e.preventDefault()
     const noteId = this.props.id
 
-    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+    fetch(process.env.REACT_APP_API_NOTES_ENDPOINT+ `/${noteId}`, {
       method: 'DELETE',
       headers: {
+        'Authorization': process.env.REACT_APP_API_KEY,
         'content-type': 'application/json'
       },
     })
@@ -38,12 +39,12 @@ export default class Note extends React.Component {
   }
 
   render() {
-    const { name, id, modified } = this.props
+    const { title, id, date } = this.props
     return (
       <div className='Note'>
         <h2 className='Note__title'>
           <Link to={`/note/${id}`}>
-            {name}
+            {title}
           </Link>
         </h2>
         <button
@@ -60,7 +61,7 @@ export default class Note extends React.Component {
             Modified
             {' '}
             <span className='Date'>
-              {format(modified, 'Do MMM YYYY')}
+              {format(date, 'Do MMM YYYY')}
             </span>
           </div>
         </div>

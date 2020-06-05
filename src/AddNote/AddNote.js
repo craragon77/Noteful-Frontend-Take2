@@ -15,14 +15,15 @@ export default class AddNote extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const newNote = {
-      name: e.target['note-name'].value,
+      title: e.target['note-name'].value,
       content: e.target['note-content'].value,
-      folderId: e.target['note-folder-id'].value,
-      modified: new Date(),
+      folder_id: e.target['note-folder-id'].value,
+      date: new Date(),
     }
-    fetch(`${config.API_ENDPOINT}/notes`, {
+    fetch(process.env.REACT_APP_API_NOTES_ENDPOINT, {
       method: 'POST',
       headers: {
+        'authorization': process.env.REACT_APP_API_KEY,
         'content-type': 'application/json'
       },
       body: JSON.stringify(newNote),
