@@ -16,7 +16,7 @@ export default class Note extends React.Component {
     e.preventDefault()
     const id = this.props.id
 
-    fetch(process.env.REACT_APP_DYNAMIC_NOTES + `/${id}`, {
+    fetch(process.env.REACT_APP_API_NOTES_ENDPOINT + `/${id}`, {
       method: 'DELETE',
       headers: {
         'authorization': process.env.REACT_APP_API_KEY,
