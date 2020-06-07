@@ -27,12 +27,12 @@ export default class AddFolder extends Component {
     })
       .then(res => {
         if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
+          return res.then(e => Promise.reject(e))
+        return res
       })
       .then(folder => {
         this.context.addFolder(folder)
-        this.props.history.push(process.env.REACT_APP_API_KEY + `/${folder.id}`)
+        this.props.history.push('/')
       })
       .catch(error => {
         console.error({ error })
