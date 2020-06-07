@@ -16,7 +16,7 @@ export default class Note extends React.Component {
     e.preventDefault()
     const id = this.props.id
 
-    fetch(process.env.REACT_APP_API_NOTES_ENDPOINT + `/${id}`, {
+    fetch(process.env.REACT_APP_API_ENDPOINT + `/api/notes/${id}`, {
       method: 'DELETE',
       headers: {
         'authorization': process.env.REACT_APP_API_KEY,
@@ -25,8 +25,8 @@ export default class Note extends React.Component {
     })
       .then(res => {
         if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
+          return res.then(e => Promise.reject(e))
+        return res
       })
       .then(() => {
         this.context.deleteNote(id)
@@ -34,7 +34,7 @@ export default class Note extends React.Component {
         this.props.onDeleteNote(id)
       })
       .catch(error => {
-        alert('the catch has activated')
+        console.error({error})
       })
   }
 
