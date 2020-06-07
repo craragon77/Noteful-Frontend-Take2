@@ -117,7 +117,7 @@ class App extends Component {
         />
         <Route
           path='/add-note'
-          component={AddNote}
+          render ={() => <AddNote handleAddNote={this.handleAddNote} />}
         />
       </>
     )

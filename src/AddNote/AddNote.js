@@ -7,8 +7,8 @@ import './AddNote.css'
 export default class AddNote extends Component {
   constructor(props){
     super(props)
-    this.state = {value: ''};
-    this.handleChange = this.handleChange.bind(this)
+    //this.state = {value: ''};
+    //this.handleChange = this.handleChange.bind(this)
   }
   static defaultProps = {
     history: {
@@ -40,16 +40,16 @@ export default class AddNote extends Component {
       })
       .then(note => {
         this.context.addNote(note)
-        this.handleAddNote()
+        this.handleAddNote(note)
         this.props.history.push(`/`)
       })
       .catch(error => {
         console.error({ error })
       })
   }
-  handleChange = e => {
+  /*handleChange = e => {
     this.setState({[e.target.getAttribute('name')]: e.target.value})
-    }
+    } */
 
   render() {
     const { folders=[] } = this.context
@@ -83,7 +83,7 @@ export default class AddNote extends Component {
             </select>
           </div>
           <div className='buttons'>
-            <button type='submit' onClick = {this.handleChange}>
+            <button type='submit'>
               Add note
             </button>
           </div>
