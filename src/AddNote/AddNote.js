@@ -40,18 +40,16 @@ export default class AddNote extends Component {
       })
       .then(note => {
         this.context.addNote(note)
+        this.handleAddNote()
         this.props.history.push(`/`)
       })
       .catch(error => {
         console.error({ error })
       })
   }
-  handleChange = (e) => {
-    this.setState({[e.target.getAttribute('note-title')]: e.target.value}),
-    this.setState({[e.target.getAttribute('note-content')]: e.target.value}),
-    this.setState({[e.target.getAttribute('note-folder_id')]: e.target.value}),
-    this.setState({[e.target.getAttribute(new Date())]: e.target.value})
-  }
+  handleChange = e => {
+    this.setState({[e.target.getAttribute('name')]: e.target.value})
+    }
 
   render() {
     const { folders=[] } = this.context
