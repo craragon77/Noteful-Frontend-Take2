@@ -5,6 +5,11 @@ import config from '../config'
 import './AddNote.css'
 
 export default class AddNote extends Component {
+  constructor(props){
+    super(props)
+    this.state = {value: ''};
+    this.handleChange = this.handleChange.bind(this)
+  }
   static defaultProps = {
     history: {
       push: () => { }
@@ -41,6 +46,12 @@ export default class AddNote extends Component {
         console.error({ error })
       })
   }
+  handleChange = (e) => {
+    this.setState({[e.target.getAttribute('note-title')]: e.target.value}),
+    this.setState({[e.target.getAttribute('note-content')]: e.target.value}),
+    this.setState({[e.target.getAttribute('note-folder_id')]: e.target.value}),
+    this.setState({[e.target.getAttribute(new Date())]: e.target.value})
+  }
 
   render() {
     const { folders=[] } = this.context
@@ -52,13 +63,13 @@ export default class AddNote extends Component {
             <label htmlFor='note-title-input'>
               Name
             </label>
-            <input type='text' id='note-title-input' name='note-title' />
+            <input type='text' id='note-title-input' name='note-title'/>
           </div>
           <div className='field'>
             <label htmlFor='note-content-input'>
               Content
             </label>
-            <textarea id='note-content-input' name='note-content' />
+            <textarea id='note-content-input' name='note-content'/>
           </div>
           <div className='field'>
             <label htmlFor='note-folder-select'>
@@ -74,7 +85,7 @@ export default class AddNote extends Component {
             </select>
           </div>
           <div className='buttons'>
-            <button type='submit'>
+            <button type='submit' onClick = {this.handleChange}>
               Add note
             </button>
           </div>
