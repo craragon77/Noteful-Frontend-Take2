@@ -30,7 +30,7 @@ export default class AddFolder extends Component {
           return res.then(e => Promise.reject(e))
         return res
       })
-      .then(folder => {
+      .then(() => {
         //this.context.addFolder(folder)
         this.props.handleAddFolder(folder)
         this.props.history.push('/')

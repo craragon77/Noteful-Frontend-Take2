@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
+
 import './AddNote.css'
 
 export default class AddNote extends Component {
@@ -38,11 +39,9 @@ export default class AddNote extends Component {
           return res.json().then(e => Promise.reject(e))
         return res.json()
       })
-      .then(note => {
-        console.log(note)
-        this.props.handleAddNote(note)
-        console.log(this.state.note)
-        //this.props.history.push(`/`)
+      .then(() => {
+        this.props.handleAddNote(newNote)
+        this.props.history.push('/')
       })
       .catch(error => {
         console.error({ error })
