@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
+import {withRouter} from 'react-router-dom'
 import './AddFolder.css'
 
 export default class AddFolder extends Component {
@@ -33,7 +34,6 @@ export default class AddFolder extends Component {
       .then(() => {
         //this.context.addFolder(folder)
         this.props.handleAddFolder(folder)
-        this.props.history.push('/')
       })
       .catch(error => {
         console.error({ error })

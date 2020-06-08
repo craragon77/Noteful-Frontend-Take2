@@ -41,7 +41,6 @@ export default class AddNote extends Component {
       })
       .then(() => {
         this.props.handleAddNote(newNote)
-        this.props.history.push('/')
       })
       .catch(error => {
         console.error({ error })
