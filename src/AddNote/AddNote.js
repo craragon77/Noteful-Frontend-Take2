@@ -39,7 +39,9 @@ export default class AddNote extends Component {
         return res.json()
       })
       .then(note => {
+        console.log(note)
         this.props.handleAddNote(note)
+        console.log(this.state.note)
         //this.props.history.push(`/`)
       })
       .catch(error => {

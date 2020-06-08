@@ -67,6 +67,7 @@ class App extends Component {
     this.setState({
       notes: this.state.notes.filter(note => note.id !== noteId)
     })
+    console.log(this.state.notes)
   }
 
   renderNavRoutes() {
