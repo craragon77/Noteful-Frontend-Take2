@@ -18,7 +18,7 @@ export default class AddNote extends Component {
   static contextType = ApiContext;
 
   handleSubmit = e => {
-    //e.preventDefault()
+    e.preventDefault(e)
     const newNote = {
       title: e.target['note-title'].value,
       content: e.target['note-content'].value,
@@ -39,11 +39,8 @@ export default class AddNote extends Component {
         return res.json()
       })
       .then(note => {
-        //this.context.addNote(note)
+        this.props.handleAddNote(note)
         this.props.history.push(`/`)
-      })
-      .then(note => {
-        this.handleSubmit(note)
       })
       .catch(error => {
         console.error({ error })
