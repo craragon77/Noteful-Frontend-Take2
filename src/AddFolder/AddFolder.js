@@ -34,9 +34,6 @@ export default class AddFolder extends Component {
         //this.context.addFolder(folder)
         this.props.handleAddFolder(folder)
         this.props.history.push('/')
-        
-        
-        
       })
       .catch(error => {
         console.error({ error })
