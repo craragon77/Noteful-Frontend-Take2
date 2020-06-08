@@ -25,6 +25,7 @@ export default class NotePageMain extends React.Component {
         <Note
           id={note.id}
           title={note.title}
+          folder_id={note.folder_id}
           date={note.date}
           onDeleteNote={this.handleDeleteNote}
         />
