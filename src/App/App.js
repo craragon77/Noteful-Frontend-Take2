@@ -18,8 +18,8 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const notesUrl = process.env.REACT_APP_API_NOTES_ENDPOINT
-    const foldersUrl = process.env.REACT_APP_API_FOLDERS_ENDPOINT
+    const notesUrl = process.env.REACT_APP_API_ENDPOINT + `/api/notes`
+    const foldersUrl = process.env.REACT_APP_API_ENDPOINT + `/api/folders`
     const API_KEY = process.env.REACT_APP_API_KEY
     Promise.all([
       fetch(notesUrl),
@@ -72,7 +72,7 @@ class App extends Component {
   renderNavRoutes() {
     return (
       <>
-        {['/', '/folder/folderId'].map(path =>
+        {['/', '/folders/:folderId'].map(path =>
           <Route
             exact
             key={path}
@@ -81,7 +81,7 @@ class App extends Component {
           />
         )}
         <Route
-          path='/note/:noteId'
+          path='/notes/:noteId'
           component={NotePageNav}
         />
         <Route
@@ -99,7 +99,7 @@ class App extends Component {
   renderMainRoutes() {
     return (
       <>
-        {['/', '/folder/folderId'].map(path =>
+        {['/', '/folder/:folderId'].map(path =>
           <Route
             exact
             key={path}
