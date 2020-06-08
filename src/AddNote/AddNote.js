@@ -40,7 +40,7 @@ export default class AddNote extends Component {
       })
       .then(note => {
         this.props.handleAddNote(note)
-        this.props.history.push(`/`)
+        //this.props.history.push(`/`)
       })
       .catch(error => {
         console.error({ error })
