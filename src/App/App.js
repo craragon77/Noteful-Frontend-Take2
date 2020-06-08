@@ -113,7 +113,7 @@ class App extends Component {
         />
         <Route
           path='/add-folder'
-          component={AddFolder}
+          render = {() => <AddFolder handleAddFolder={this.handleAddFolder} />}
         />
         <Route
           path='/add-note'
