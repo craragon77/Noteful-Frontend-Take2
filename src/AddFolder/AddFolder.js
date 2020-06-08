@@ -13,7 +13,7 @@ export default class AddFolder extends Component {
   static contextType = ApiContext;
 
   handleSubmit = e => {
-    e.preventDefault()
+    //e.preventDefault()
     const folder = {
       name: e.target['folder-name'].value
     }
@@ -31,8 +31,9 @@ export default class AddFolder extends Component {
         return res
       })
       .then(folder => {
-        this.context.addFolder(folder)
+        //this.context.addFolder(folder)
         this.props.history.push('/')
+        this.props.AddFolder(folder)
       })
       .catch(error => {
         console.error({ error })
