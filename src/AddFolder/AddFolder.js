@@ -15,7 +15,6 @@ export default class AddFolder extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const folder = {
-      id:'',
       name: e.target['folder-name'].value
     }
     if (!folder.name){
@@ -46,7 +45,6 @@ export default class AddFolder extends Component {
         })
     }
   }
-  
     
   render() {
     return (
