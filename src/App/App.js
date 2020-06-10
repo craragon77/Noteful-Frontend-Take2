@@ -62,13 +62,6 @@ class App extends Component {
       ]
     })
   }
-  componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-    if (this.props.folders !== prevProps.folders) {
-      console.log('testing!!!!')
-      this.fetchData(this.props.userID);
-    }
-  }
 
   handleDeleteNote = noteId => {
     this.setState({
@@ -77,6 +70,7 @@ class App extends Component {
     console.log(this.state.notes)
   }
 
+  handleClickHistory 
   renderNavRoutes() {
     return (
       <>
@@ -121,11 +115,24 @@ class App extends Component {
         />
         <Route
           path='/add-folder'
-          render = {({history}) => <AddFolder handleAddFolder={this.handleAddFolder} />}
+          render = {({history}) => {
+            console.log(history)
+            return <AddFolder handleAddFolder={this.handleAddFolder}
+            onClickHistory={() => history.push('/')}
+            />}
+          }
+          
+        
         />
         <Route
           path='/add-note'
-          render ={({history}) => <AddNote handleAddNote={this.handleAddNote} />}
+          render ={({history}) => {
+            console.log(history)
+            return <AddNote handleAddNote={this.handleAddNote} 
+            onClickHistory = {() => history.push('/')}
+            />}
+          }
+          
         />
       </>
     )

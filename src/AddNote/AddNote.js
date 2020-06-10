@@ -44,6 +44,7 @@ export default class AddNote extends Component {
         })
         .then((res) => {
           this.props.handleAddNote(res)
+          this.props.onClickHistory()
         })
         .catch(error => {
           console.error({ error })

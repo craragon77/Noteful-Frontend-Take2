@@ -37,9 +37,7 @@ export default class AddFolder extends Component {
           this.props.handleAddFolder(res)
           console.log(res)
           console.log('the second then activated!')
-          //this.context.addFolder(folder)
-          //this.props.history.push('/')
-          
+          this.props.onClickHistory()
           })
         .catch(error => {
           console.error({ error })
