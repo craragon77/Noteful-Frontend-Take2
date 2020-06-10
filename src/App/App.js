@@ -70,6 +70,8 @@ class App extends Component {
     console.log(this.state.notes)
   }
 
+  
+
   renderNavRoutes() {
     return (
       <>
@@ -126,6 +128,7 @@ class App extends Component {
 
   render() {
     console.log(this.state.notes)
+    console.log(this.state.folders)
     const value = {
       notes: this.state.notes,
       folders: this.state.folders,

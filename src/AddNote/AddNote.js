@@ -26,25 +26,30 @@ export default class AddNote extends Component {
       folder_id: e.target['note-folder-id'].value,
       date: new Date(),
     }
-    fetch(process.env.REACT_APP_API_NOTES_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'authorization': process.env.REACT_APP_API_KEY,
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(newNote),
-    })
-      .then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
+    if(!newNote.title || !newNote.content || !newNote.folder_id){
+      alert('make sure the entire form is filled out before submitting!')
+    } else {
+        fetch(process.env.REACT_APP_API_NOTES_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'authorization': process.env.REACT_APP_API_KEY,
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(newNote),
       })
-      .then(() => {
-        this.props.handleAddNote(newNote)
-      })
-      .catch(error => {
-        console.error({ error })
-      })
+        .then(res => {
+          if (!res.ok)
+            return res.json().then(e => Promise.reject(e))
+          return res.json()
+        })
+        .then(() => {
+          this.props.handleAddNote(newNote)
+        })
+        .catch(error => {
+          console.error({ error })
+        })
+    }
+    
   }
   /*handleChange = e => {
     this.setState({[e.target.getAttribute('name')]: e.target.value})
