@@ -42,8 +42,8 @@ export default class AddNote extends Component {
             return res.json().then(e => Promise.reject(e))
           return res.json()
         })
-        .then(() => {
-          this.props.handleAddNote(newNote)
+        .then((res) => {
+          this.props.handleAddNote(res)
         })
         .catch(error => {
           console.error({ error })

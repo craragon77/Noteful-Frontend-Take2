@@ -31,14 +31,15 @@ export default class AddFolder extends Component {
         .then(res => {
           if (!res.ok)
             return res.then(e => Promise.reject(e))
-          return res
+          return res.json()
         })
-        .then(() => {  
-          this.props.handleAddFolder(folder)
-          console.log(folder)
+        .then((res) => {  
+          this.props.handleAddFolder(res)
+          console.log(res)
           console.log('the second then activated!')
           //this.context.addFolder(folder)
           //this.props.history.push('/')
+          
           })
         .catch(error => {
           console.error({ error })

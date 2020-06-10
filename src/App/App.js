@@ -62,6 +62,13 @@ class App extends Component {
       ]
     })
   }
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.folders !== prevProps.folders) {
+      console.log('testing!!!!')
+      this.fetchData(this.props.userID);
+    }
+  }
 
   handleDeleteNote = noteId => {
     this.setState({
@@ -69,8 +76,6 @@ class App extends Component {
     })
     console.log(this.state.notes)
   }
-
-  
 
   renderNavRoutes() {
     return (
