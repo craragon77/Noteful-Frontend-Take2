@@ -116,11 +116,11 @@ class App extends Component {
         />
         <Route
           path='/add-folder'
-          render = {() => <AddFolder handleAddFolder={this.handleAddFolder} />}
+          render = {({history}) => <AddFolder handleAddFolder={this.handleAddFolder} />}
         />
         <Route
           path='/add-note'
-          render ={() => <AddNote handleAddNote={this.handleAddNote} />}
+          render ={({history}) => <AddNote handleAddNote={this.handleAddNote} />}
         />
       </>
     )

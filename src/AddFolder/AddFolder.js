@@ -5,12 +5,6 @@ import config from '../config'
 import './AddFolder.css'
 
 export default class AddFolder extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      name: ''
-    }
-  }
   static defaultProps = {
     history: {
       push: () => { }
@@ -18,16 +12,11 @@ export default class AddFolder extends Component {
   }
   static contextType = ApiContext;
 
-  handleChange = e => {
-    this.setState({
-      name: e.target.value
-    })
-  }
-
   handleSubmit = e => {
     e.preventDefault()
     const folder = {
-      name: this.state.name
+      id:'',
+      name: e.target['folder-name'].value
     }
     if (!folder.name){
       alert('please enter a for the folder')
@@ -43,9 +32,9 @@ export default class AddFolder extends Component {
         .then(res => {
           if (!res.ok)
             return res.then(e => Promise.reject(e))
-          return res.json()
+          return res
         })
-        .then((folder) => {  
+        .then(() => {  
           this.props.handleAddFolder(folder)
           console.log(folder)
           console.log('the second then activated!')
@@ -68,7 +57,7 @@ export default class AddFolder extends Component {
             <label htmlFor='folder-name-input'>
               Name
             </label>
-            <input type='text' id='folder-name-input' name='folder-name' onChange={this.handleChange}/>
+            <input type='text' id='folder-name-input' name='folder-name'/>
           </div>
           <div className='buttons'>
             <button type='submit'>
